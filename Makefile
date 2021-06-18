@@ -1,7 +1,8 @@
-MODULOS = main \
-	arvore_binaria
+MODULOS = arvore_binaria
 
-OBJETOS = $(addsuffix .o,$(MODULOS))
+OBJETOS = main.o $(addsuffix .o,$(MODULOS))
+
+HEADERS = $(addsuffix .h,$(MODULOS))
 
 .PHONY : all clean
 
@@ -9,6 +10,8 @@ all : main
 	./$<
 
 main : $(OBJETOS)
+
+$(OBJETOS): $(HEADERS)
 
 clean : 
 	$(RM) $(OBJETOS)
