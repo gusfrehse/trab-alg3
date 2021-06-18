@@ -6,9 +6,9 @@ typedef struct tNo tNo;
 struct tNo
 {
     tNo *dir, *esq;
+    char *chave;
 };
 
-// Não sei se é bom nome
-tNo *criar_no(const char *expressao);
+tNo *criar_arvore(const char *expressao);
 
 #endif
