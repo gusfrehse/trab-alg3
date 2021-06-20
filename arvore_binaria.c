@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
 #include "arvore_binaria.h"
+
+tNo *criar_arvore_aux(const char *expressao, int *indice);
+
 
 tNo *criar_arvore(const char *expressao)
 {
@@ -8,7 +12,7 @@ tNo *criar_arvore(const char *expressao)
     return criar_arvore_aux(expressao, &indice_inicial);
 }
 
-tNo *criar_no(int chave)
+tNo *criar_no(const char* chave)
 {
     tNo *no = malloc(sizeof(tNo));
 
@@ -21,25 +25,32 @@ tNo *criar_no(int chave)
 
 tNo *criar_arvore_aux(const char *expressao, int *indice)
 {
-    *indice++;
+    (*indice)++;
     const char *chave = expressao + *indice;
 
     tNo *no = criar_no(chave);
+    //printf("criado no: %s\n", chave);
 
-    if (isdigit(chave))
+
+    //printf("teste\n");
+
+    if (isdigit(*chave))
     {
+        //printf("eh digito chave:%s\n", chave);
+        //getchar();
         while (isdigit(expressao[*indice]))
         {
-            *indice++;
+            (*indice)++;
         }
     }
     else
     {
+        (*indice)++;
         no->esq = criar_arvore_aux(expressao, indice);
         no->dir = criar_arvore_aux(expressao, indice);
     }
 
-    *indice++;
+    (*indice)++;
 
     return no;
 }
