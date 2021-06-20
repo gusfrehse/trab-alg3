@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "arvore_binaria.h"
 
 tNo *criar_arvore_aux(const char *expressao, int *indice);
@@ -51,6 +52,16 @@ tNo *criar_arvore_aux(const char *expressao, int *indice)
     (*indice)++;
 
     return no;
+}
+
+bool eh_folha(tNo *no)
+{
+    if (no->dir == NULL && no->esq == NULL)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 float resolver_avore(tNo *no)
