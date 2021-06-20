@@ -5,14 +5,13 @@
 
 tNo *criar_arvore_aux(const char *expressao, int *indice);
 
-
 tNo *criar_arvore(const char *expressao)
 {
     int indice_inicial = 0;
     return criar_arvore_aux(expressao, &indice_inicial);
 }
 
-tNo *criar_no(const char* chave)
+tNo *criar_no(const char *chave)
 {
     tNo *no = malloc(sizeof(tNo));
 
@@ -30,7 +29,6 @@ tNo *criar_arvore_aux(const char *expressao, int *indice)
 
     tNo *no = criar_no(chave);
     //printf("criado no: %s\n", chave);
-
 
     //printf("teste\n");
 
@@ -53,4 +51,21 @@ tNo *criar_arvore_aux(const char *expressao, int *indice)
     (*indice)++;
 
     return no;
+}
+
+float resolver_avore(tNo *no)
+{
+
+    if (eh_folha(no))
+    {
+        return atof(no->chave);
+    }
+    else
+    {
+        float operando1 = resolver_avore(no->esq);
+        float operando2 = resolver_avore(no->dir);
+        float operacao = no->chave[0];
+
+        return operar(operando1, operando2, operacao);
+    }
 }
