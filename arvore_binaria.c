@@ -5,6 +5,9 @@
 #include "arvore_binaria.h"
 
 tNo *criar_arvore_aux(const char *expressao, int *indice);
+float operar(float operando1, float operando2, char operacao);
+void imprimir_operacao(float operando1, float operando2, char operacao);
+
 
 tNo *criar_arvore(const char *expressao)
 {
@@ -75,10 +78,15 @@ float resolver_avore(tNo *no)
     {
         float operando1 = resolver_avore(no->esq);
         float operando2 = resolver_avore(no->dir);
-        float operacao = no->chave[0];
-
+        char operacao = no->chave[0];
+        imprimir_operacao(operando1, operando2, operacao);
         return operar(operando1, operando2, operacao);
     }
+}
+
+void imprimir_operacao(float operando1, float operando2, char operacao)
+{
+    printf("%.2f %c %.2f\n", operando1, operacao, operando2);
 }
 
 float operar(float operando1, float operando2, char operacao)
@@ -96,4 +104,14 @@ float operar(float operando1, float operando2, char operacao)
     default:
         return -1;
     }
+}
+
+void liberar_arvore(tNo *no)
+{
+    if (!eh_folha(no))
+    {
+        liberar_arvore(no->esq);
+        liberar_arvore(no->dir);
+    }
+    free(no);
 }

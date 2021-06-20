@@ -10,5 +10,10 @@ struct tNo
 };
 
 tNo *criar_arvore(const char *expressao);
+float resolver_avore(tNo *no);
+void liberar_arvore(tNo *no);
+
+
+
 
 #endif
