@@ -80,3 +80,20 @@ float resolver_avore(tNo *no)
         return operar(operando1, operando2, operacao);
     }
 }
+
+float operar(float operando1, float operando2, char operacao)
+{
+    switch (operacao)
+    {
+    case '*':
+        return operando1 * operando2;
+    case '+':
+        return operando1 + operando2;
+    case '-':
+        return operando1 - operando2;
+    case '/':
+        return operando1 / operando2;
+    default:
+        return -1;
+    }
+}
