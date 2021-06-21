@@ -12,7 +12,7 @@ int main()
     fgets(input, MAX_INPUT_SIZE - 1, stdin);
 
     tNo *arvore = criar_arvore(input);
-    float resultado = resolver_avore(arvore);
+    float resultado = resolver_arvore(arvore);
     printf("%.2f\n", resultado);
     liberar_arvore(arvore);
     return 0;

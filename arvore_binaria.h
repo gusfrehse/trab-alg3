@@ -13,7 +13,7 @@
  * Observações: A chave aponta diretamente para o número/operação na
  *              expressão.
  *              
- * Exemplo:
+ * Exemplo    :
  *      Expressão         :   (*(33)(+(405)(7)))
  *      Ponteiros         :    ^ ^   ^ ^    ^
  *      Chaves (string)   :   *(33)(+(405)(7)))
@@ -30,71 +30,63 @@ struct tNo
     const char *chave;
 };
 
-/*
- * Função
+
+/* =================================================================
+ *
+ * Função criar_arvore(const char *expressao)
  * 
- * Descrição  :
+ * Descrição  : Cria uma AB a partir de uma expressão bem formatada.
  * 
- * Parâmetros :
+ * Parâmetros : expressao   - string a ser evaluada.
  * 
- * Retorno    :
+ * Retorno    : Nó raiz da árvore gerada.
  * 
- * Observações:
+ * Observações: A função não checa se a expressão é mal formatada;
+ *              A árvore precisa ser liberada manualmente (com
+ *              liberar_arvore()).
  * 
- * Exemplo    :
- * 
+ * Exemplo    : tNo *arvore = criar_arvore("(+(3)(2))");
  * 
 */
 tNo *criar_arvore(const char *expressao);
 
-/*
- * Função
+
+/* =================================================================
+ *
+ * Função resolver_arvore(tNo *no)
  * 
- * Descrição  :
+ * Descrição  : Resolve a expressão armazenada na AB.
  * 
- * Parâmetros :
+ * Parâmetros : no  - Nó raiz da árvore.
  * 
- * Retorno    :
+ * Retorno    : Valor calculado.
  * 
- * Observações:
+ * Observações: Imprime na tela as operações intermediárias
+ *              realizadas.
  * 
- * Exemplo    :
+ * Exemplo    : float resultado = resolver_arvore(arvore);
  * 
  * 
 */
-float resolver_avore(tNo *no);
+float resolver_arvore(tNo *no);
 
-/*
- * Função
+/* =================================================================
+ *
+ * Função liberar_arvore(tNo *no)
  * 
- * Descrição  :
+ * Descrição  : Libera a árvore da memória (free())
  * 
- * Parâmetros :
+ * Parâmetros : no  - Nó raiz da árvore.
  * 
- * Retorno    :
+ * Retorno    : Nenhum.
  * 
- * Observações:
+ * Observações: Não esquecer de chamar essa função sempre que
+ *              terminar de utilizar uma árvore.
  * 
- * Exemplo    :
+ * Exemplo    : liberar_arvore(arvore);
  * 
  * 
 */
 void liberar_arvore(tNo *no);
 
 #endif
-
-/*
- * Função
- * 
- * Descrição  :
- * 
- * Parâmetros :
- * 
- * Retorno    :
- * 
- * Observações:
- * 
- * Exemplo    :
- * 
- * 
-*/

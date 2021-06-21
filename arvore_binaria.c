@@ -67,7 +67,7 @@ bool eh_folha(tNo *no)
     return false;
 }
 
-float resolver_avore(tNo *no)
+float resolver_arvore(tNo *no)
 {
 
     if (eh_folha(no))
@@ -76,8 +76,8 @@ float resolver_avore(tNo *no)
     }
     else
     {
-        float operando1 = resolver_avore(no->esq);
-        float operando2 = resolver_avore(no->dir);
+        float operando1 = resolver_arvore(no->esq);
+        float operando2 = resolver_arvore(no->dir);
         char operacao = no->chave[0];
         imprimir_operacao(operando1, operando2, operacao);
         return operar(operando1, operando2, operacao);
