@@ -106,17 +106,25 @@ bool eh_folha(tNo *no)
 
 float resolver_arvore(tNo *no)
 {
-
-    if (eh_folha(no))
+    if (eh_folha(no)) // chave contém número
     {
+        // converte a chave para float. Para a conversão assim que
+        // encontrar um caracter não numérico.
         return atof(no->chave);
     }
-    else
+    else // chave contem uma operação
     {
+        // Resolve as subárvores que contém as expressões do primeiro e segundo
+        // operandos.
         float operando1 = resolver_arvore(no->esq);
         float operando2 = resolver_arvore(no->dir);
+        
+        // A operação é o primeiro caracter da chave.
         char operacao = no->chave[0];
+        
         imprimir_operacao(operando1, operando2, operacao);
+
+        // Retorna resultado da operação.        
         return operar(operando1, operando2, operacao);
     }
 }
@@ -147,6 +155,7 @@ void liberar_arvore(tNo *no)
 {
     if (!eh_folha(no))
     {
+        // se não é folha libera as subárvores filhas
         liberar_arvore(no->esq);
         liberar_arvore(no->dir);
     }
