@@ -30,7 +30,6 @@ struct tNo
     const char *chave;
 };
 
-
 /* =================================================================
  *
  * Função criar_arvore(const char *expressao)
@@ -50,7 +49,6 @@ struct tNo
 */
 tNo *criar_arvore(const char *expressao);
 
-
 /* =================================================================
  *
  * Função resolver_arvore(tNo *no)
@@ -65,7 +63,6 @@ tNo *criar_arvore(const char *expressao);
  *              realizadas.
  * 
  * Exemplo    : float resultado = resolver_arvore(arvore);
- * 
  * 
 */
 float resolver_arvore(tNo *no);
@@ -84,7 +81,6 @@ float resolver_arvore(tNo *no);
  *              terminar de utilizar uma árvore.
  * 
  * Exemplo    : liberar_arvore(arvore);
- * 
  * 
 */
 void liberar_arvore(tNo *no);
